@@ -186,5 +186,5 @@
     "workspaceMount": "source=${localWorkspaceFolder},target=/workspaces/my-site,type=bind,consistency=cached",
     "workspaceFolder": "/workspaces/my-site",
     // run post-create scripts (in .devcontainer/scripts/) to set up environment, install dependencies, etc.
-    "postCreateCommand": "bash .devcontainer/scripts/post-create-dotfiles.sh"
+    "postCreateCommand": "bash .devcontainer/scripts/post-create-dotfiles.sh && bash .devcontainer/scripts/post-create-pkgs.sh"
 }
