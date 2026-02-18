@@ -1,4 +1,5 @@
-FROM python:3.14-slim
+# trixie may not support all features/packages that are needed for dev as of 02/2026, using bookworm for now.
+FROM python:3.14-slim-bookworm
 
 # Prevent python from writing pyc files and buffering stdout/stderr
 ENV PYTHONDONTWRITEBYTECODE=1 \
@@ -26,7 +27,7 @@ RUN apt-get update && apt-get install -y \
     # shell
     bash \
     zsh \
-    # essential build tools for comppiling python packages with C extenstions (e.g, Pillow, psycopg2)
+    # essential build tools for compiling python packages with C extensions (e.g, Pillow, psycopg2)
     build-essential \
     # development tools
     curl \
