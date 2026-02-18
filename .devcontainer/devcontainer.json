@@ -98,6 +98,10 @@
                     "editor.defaultFormatter": "esbenp.prettier-vscode",
                     "editor.tabSize": 2
                 },
+                "[markdown]": {
+                    "editor.defaultFormatter": "esbenp.prettier-vscode",
+                    "editor.formatOnSave": true
+                },
                 // TOML Configuration
                 "[toml]": {
                     "editor.defaultFormatter": "tamasfe.even-better-toml",
@@ -169,7 +173,6 @@
                 "vscodevim.vim",
                 // Markdown
                 "yzhang.markdown-all-in-one",
-                "davidanson.vscode-markdownlint",
                 // REST API Testing
                 "humao.rest-client",
                 // YAML & TOML
