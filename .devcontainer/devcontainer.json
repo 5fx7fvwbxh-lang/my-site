@@ -109,6 +109,7 @@
                 },
                 "evenBetterToml.formatter.alignEntries": true,
                 "evenBetterToml.formatter.arrayAutoExpand": true,
+                "evenBetterToml.schema.enabled": false,
                 // Emmet
                 "emmet.includeLanguages": {
                     "django-html": "html"
