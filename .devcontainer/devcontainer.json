@@ -100,6 +100,7 @@
                 },
                 "[markdown]": {
                     "editor.defaultFormatter": "esbenp.prettier-vscode",
+                    "files.trimTrailingWhitespace": false,
                     "editor.formatOnSave": true
                 },
                 // TOML Configuration
