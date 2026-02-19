@@ -13,7 +13,7 @@ HOME_HISTORY="$HOME/.zsh_history"
 mkdir -p "$HISTORY_DIR"
 
 # Set ownership to the current user
-chown -R "$(whoami)" "$HISTORY_DIR"
+sudo chown -R "$(whoami)" "$HISTORY_DIR"
 
 # If persisted history doesn't exist yet, copy from home if available
 if [ ! -f "$HISTORY_FILE" ] && [ -f "$HOME_HISTORY" ] && [ ! -L "$HOME_HISTORY" ]; then
