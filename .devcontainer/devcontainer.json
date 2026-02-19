@@ -187,8 +187,11 @@
             ]
         }
     },
+    "mounts": [
+        "source=my-site-zsh-history,target=/commandhistory,type=volume"
+    ],
     "workspaceMount": "source=${localWorkspaceFolder},target=/workspaces/my-site,type=bind,consistency=cached",
     "workspaceFolder": "/workspaces/my-site",
     // run post-create scripts (in .devcontainer/scripts/) to set up environment, install dependencies, etc.
-    "postCreateCommand": "bash .devcontainer/scripts/post-create-dotfiles.sh && bash .devcontainer/scripts/post-create-pkgs.sh"
+    "postCreateCommand": "bash .devcontainer/scripts/post-create-dotfiles.sh && bash .devcontainer/scripts/post-create-pkgs.sh && bash .devcontainer/scripts/setup-zsh-history.sh"
 }
