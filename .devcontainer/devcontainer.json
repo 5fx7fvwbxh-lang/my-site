@@ -193,6 +193,9 @@
     ],
     "workspaceMount": "source=${localWorkspaceFolder},target=/workspaces/my-site,type=bind,consistency=cached",
     "workspaceFolder": "/workspaces/my-site",
+    "containerEnv": {
+        "DEVCONTAINER_SCRIPTS_DIR": "${containerWorkspaceFolder}/.devcontainer/scripts"
+    },
     // run post-create scripts (in .devcontainer/scripts/) to set up environment, install dependencies, etc.
-    "postCreateCommand": "bash .devcontainer/scripts/post-create-dotfiles.sh && bash .devcontainer/scripts/post-create-pkgs.sh && bash .devcontainer/scripts/setup-zsh-history.sh"
+    "postCreateCommand": "bash ${DEVCONTAINER_SCRIPTS_DIR}/post-create-dotfiles.sh && bash ${DEVCONTAINER_SCRIPTS_DIR}/post-create-pkgs.sh && bash ${DEVCONTAINER_SCRIPTS_DIR}/setup-zsh-history.sh"
 }
