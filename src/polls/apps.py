@@ -2,4 +2,6 @@ from django.apps import AppConfig
 
 
 class PollsConfig(AppConfig):
-    name = 'polls'
+    """Configuration for the Polls app."""
+
+    name = "polls"
