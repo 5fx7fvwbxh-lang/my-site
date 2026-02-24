@@ -15,7 +15,7 @@ $UV sync
 
 echo "Collecting static files..."
 if [ -f "$PY_MANAGE" ]; then
-    $UV run python $PY_MANAGE collectstatic --no-input || echo "no static files to collect"
+    $UV run python $PY_MANAGE collectstatic --noinput || echo "no static files to collect"
 fi
 
 sudo systemctl restart gunicorn
