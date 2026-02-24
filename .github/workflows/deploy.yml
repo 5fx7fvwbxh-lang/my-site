@@ -3,16 +3,22 @@ on:
   push:
     branches: [ main ]
 
+env:
+  DEPLOY_PATH: /var/www/bush-capital
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Deploy to DigitalOcean Droplet
-        uses: appleboy/ssh-action@master
+        uses: appleboy/ssh-action@0ff4204d59e8e51228ff73bce53f80d53301dee2 # v1.2.5
         with:
-          host: ${{ secrets.HOST_IP}}
+          host: ${{ secrets.HOST_IP }}
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_KEY }}
           debug: true
           script: |
-            /usr/bin/env bash /var/www/bush-capital/deploy.sh
+            set -euo pipefail
+            git -C "${{ env.DEPLOY_PATH }}" fetch --prune origin
+            git -C "${{ env.DEPLOY_PATH }}" reset --hard origin/main
+            /usr/bin/env bash "${{ env.DEPLOY_PATH }}/deploy.sh"
