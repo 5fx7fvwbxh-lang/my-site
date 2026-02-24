@@ -35,7 +35,12 @@ if not SECRET_KEY:
     else:
         raise ValueError("SECRET_KEY environment variable is required when DEBUG=False")
 
-ALLOWED_HOSTS = ["bush.capital", "www.bush.capital", "localhost", "170.64.172.120", "127.0.0.1"]
+DEFAULT_ALLOWED_HOSTS = ["bush.capital", "www.bush.capital", "localhost", "170.64.172.120", "127.0.0.1"]
+ALLOWED_HOSTS = [
+    host.strip()
+    for host in os.getenv("ALLOWED_HOSTS", ",".join(DEFAULT_ALLOWED_HOSTS)).split(",")
+    if host.strip()
+]
 
 
 # Application definition
