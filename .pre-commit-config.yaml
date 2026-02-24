@@ -1,0 +1,65 @@
+# Pre-commit Configuration
+
+# See https://pre-commit.com for more information
+# See https://pre-commit.com/hooks.html for more hooks
+
+default_language_version:
+  python: python3.14
+
+repos:
+  # Ruff - Fast Python linter and formatter (replaces Black, isort, Flake8, Pylint)
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.15.2
+    hooks:
+      - id: ruff
+        args: ["--fix"]
+      - id: ruff-format
+
+  # General file checks
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-added-large-files
+      - id: check-merge-conflict
+      - id: debug-statements
+      - id: mixed-line-ending
+        args: ["--fix=lf"]
+
+  # Django checks
+  - repo: https://github.com/adamchainz/django-upgrade
+    rev: 1.30.0
+    hooks:
+      - id: django-upgrade
+        args: ["--target-version", "6.0"]
+
+  # Security
+  - repo: https://github.com/PyCQA/bandit
+    rev: 1.9.3
+    hooks:
+      - id: bandit
+        args: ["-ll", "-r", "src/", "--skip", "B608,B101"]
+        pass_filenames: false
+
+  # Type checking with Ty (modern Python type checker)
+  # Run via command line: uv run ty check src/
+
+  # JSON and YAML
+  - repo: https://github.com/python-jsonschema/check-jsonschema
+    rev: 0.36.2
+    hooks:
+      - id: check-github-workflows
+      - id: check-compose-spec
+        files: ^docker-compose.*\.ya?ml$
+
+exclude: |
+  (?x)^(
+    migrations/|
+    venv/|
+    __pycache__|
+    build/|
+    dist/|
+    \.eggs/
+  )
