@@ -15,4 +15,4 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           debug: true
           script: |
-            /user/bin/env bash /var/www/bush_capital/deploy.sh
+            /usr/bin/env bash /var/www/bush_capital/deploy.sh
