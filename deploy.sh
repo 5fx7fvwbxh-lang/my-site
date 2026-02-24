@@ -1,11 +1,11 @@
 #!/user/bin/env bash
 
 USER="dobc"
-PROJ_DIR="/var/www/bush_capital"
+PROJ_DIR="/var/www/bush-capital"
 UV="/home/$USER/.local/bin/uv"
 PY_MANAGE="src/manage.py"
 
-ehco "Deploying for bush.capital..."
+echo "Deploying for bush.capital..."
 
 cd $PROJ_DIR
 
