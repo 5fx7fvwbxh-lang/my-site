@@ -1,0 +1,40 @@
+# 1. Redirect HTTP to HTTPS
+server {
+    listen 80;
+    server_name bush.capital www.bush.capital;
+
+    # Needed for Certbot verification challenges
+    location /.well-known/acme-challenge/ {
+        root /var/www/html;
+    }
+
+    location / {
+        return 301 https://$host$request_uri;
+    }
+}
+
+# 2. Main HTTPS Server
+server {
+    listen 443 ssl;
+    server_name bush.capital www.bush.capital;
+
+    # SSL Certificates (Certbot will find these)
+    ssl_certificate /etc/letsencrypt/live/bush.capital/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/bush.capital/privkey.pem;
+    include /etc/letsencrypt/options-ssl-nginx.conf;
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
+
+    # Django Static Files
+    location /static/ {
+        alias /var/www/bush_capital/src/staticfiles/;
+    }
+
+    # Proxy to Gunicorn
+    location / {
+        proxy_pass http://127.0.0.1:8000;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
