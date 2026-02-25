@@ -189,7 +189,7 @@ Account registered.
 Simulating renewal of an existing certificate for bush.capital and www.bush.capital
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-Congratulations, all simulated renewals succeeded: 
+Congratulations, all simulated renewals succeeded:
   /etc/letsencrypt/live/bush.capital/fullchain.pem (success)
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

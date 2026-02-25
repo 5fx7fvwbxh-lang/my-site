@@ -25,4 +25,3 @@ uv tool install tldr \
 curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
 # add `eval "$(zoxide init zsh)"` to .zshrc (done in post-create-dotfiles.sh) to initialize zoxide
 echo 'eval "$(zoxide init zsh)"' >> ~/.zshrc
-
