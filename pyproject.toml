@@ -89,6 +89,11 @@ prod = [
     "gevent>=24.2,<25.0",
 ]
 
+[dependency-groups]
+dev = [
+    "pre-commit>=4.5.1",
+]
+
 [tool.uv]
 # Note: Run 'uv lock' to create uv.lock for reproducible builds
 # Without uv.lock, relaxed version constraints will resolve to latest compatible versions
